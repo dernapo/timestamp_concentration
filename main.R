@@ -5,6 +5,8 @@
 
 
 ## Load libraries ####
+library(ggplot2)
+library(dplyr)
 
 ## Create examples ####
 
@@ -19,6 +21,11 @@ c <- as.Date(c, "%Y-%m-%d")
 
 d <- c("2015-01-01", "2017-01-02", "2017-01-03", "2019-07-15")
 d <- as.Date(d, "%Y-%m-%d")
+
+e <- c("2015-01-01", "2015-01-01", "2015-01-03", "2019-07-15")
+e <- as.Date(e, "%Y-%m-%d")
+
+## functions ####
 
 date_dif <- function(my_dates) {
   len <- length(my_dates)
@@ -52,9 +59,12 @@ date_mad <- function(my_dates) {
 }
   
 
-lapply(list(a, b, c, d), date_mad)
+## test ####
 
+lapply(list(a, b, c, d, e), date_mad)
 
-lapply(list(a, b, c, d), date_dif)
+lapply(list(a, b, c, d, e), date_dif)
 
-
+data.frame(a = a, b = b, c = c, d = d, e = e) %>% 
+  ggplot(aes(x=e, y = 1)) +
+  geom_point()
