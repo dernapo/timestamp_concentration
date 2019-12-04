@@ -17,6 +17,8 @@ b <- as.Date(b, "%Y-%m-%d")
 c <- c("2015-01-01", "2015-01-02", "2017-01-03", "2017-07-15")
 c <- as.Date(c, "%Y-%m-%d")
 
+d <- c("2015-01-01", "2017-01-02", "2017-01-03", "2019-07-15")
+d <- as.Date(d, "%Y-%m-%d")
 
 date_dif <- function(my_dates) {
   len <- length(my_dates)
@@ -33,8 +35,26 @@ date_dif <- function(my_dates) {
   return(sd(output)/mean(output))
 }
   
+date_mad <- function(my_dates) {
+  len <- length(my_dates)
+  #output <- list()
+  i <- 1
   
-c(date_dif(a), date_dif(b), date_dif(c))
+  for (i in 1:len-1){
+    output[i] <- as.integer(my_dates[i+1] - my_dates[i])
+    i <- i + 1
+  }
+  
+  output <- as.integer(output)
+  
+  return(median(abs(output - median(output)))/median(output))
+  
+}
+  
 
+lapply(list(a, b, c, d), date_mad)
+
+
+lapply(list(a, b, c, d), date_dif)
 
 
