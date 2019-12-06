@@ -1,6 +1,6 @@
 ####################################################
 ## Define a distribution coeficient that defines how
-## distributed are the events
+## distributed or concentrated are the events
 ####################################################
 
 
@@ -125,6 +125,6 @@ examples_dt %>%
   ylim(as.Date("2014-01-01", "%Y-%m-%d"), as.Date("2022-01-01", "%Y-%m-%d")) +
   theme_set(theme_light()) +
   labs(title = "Dispersion measures of different date series examples (distance from lower date)",
-       subtitle = "Which one should we use for domain ordering dispersion?")
+       subtitle = "Which one should we use for our use case?")
 
 
